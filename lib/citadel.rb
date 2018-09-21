@@ -3,21 +3,13 @@
 class Citadel
   require 'http'
   require 'json'
-  require_relative 'authenticator'
-  require_relative 'matrix_paths'
-  require_relative 'matrix_interceptor'
+  require 'citadel/authenticator'
+  require 'citadel/matrix_paths'
+  require 'citadel/matrix_interceptor'
 
   ##############
   # LIST ROOMS #
   ##############
-
-  def self.hi
-    puts "hello world"
-  end
-
-  def self.init
-    
-  end
 
   def self.login(login, password)
     authenticator = Authenticator.new
