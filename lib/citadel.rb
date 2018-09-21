@@ -19,7 +19,6 @@ class Citadel
   def self.list_all_public_rooms
     response = all_public_rooms_response
     room_count = JSON.parse(response.body)['total_room_count_estimate'] - 2
-    Rails.logger.debug room_count.to_s + ' public rooms'
     result = []
     (0..room_count).each do
       result << JSON.parse(response.body)['chunk'][i]['room_id']
@@ -30,7 +29,6 @@ class Citadel
   def self.list_all_joined_rooms
     response = all_joined_rooms_response
     rooms = JSON.parse(response.body)['joined_rooms']
-    Rails.logger.debug rooms.count.to_s + ' joined rooms'
     rooms
   end
 
@@ -66,11 +64,9 @@ class Citadel
 
     matrix_interceptor = MatrixInterceptor.new
     if matrix_interceptor.need_to_wait_and_retry(response)
-      Rails.logger.debug 'Retry request'
       response = HTTP.auth(ENV['AUTH_TOKEN']).post(url, body: data)
     end
 
-    Rails.logger.debug response.body.to_s
     JSON.parse(response.body)['room_id']
   end
 
@@ -92,11 +88,8 @@ class Citadel
 
     matrix_interceptor = MatrixInterceptor.new
     if matrix_interceptor.need_to_wait_and_retry(response)
-      Rails.logger.debug 'Retry request'
       response = HTTP.auth(ENV['AUTH_TOKEN']).put(url, body: data)
     end
-
-    Rails.logger.debug response.body.to_s
   end
 
   ##########
@@ -105,7 +98,6 @@ class Citadel
 
   def self.invite_users_in_room(room_id, users)
     users.each do |user|
-      Rails.logger.debug 'Invite ' + user + ' in ' + room_id
       invite_in_room(room_id, user)
     end
   end
@@ -121,11 +113,9 @@ class Citadel
 
     matrix_interceptor = MatrixInterceptor.new
     if matrix_interceptor.need_to_wait_and_retry(response)
-      Rails.logger.debug 'Retry request'
       response = HTTP.auth(ENV['AUTH_TOKEN']).post(url, body: data)
     end
 
-    Rails.logger.debug response.body.to_s
   end
 
   ###################
@@ -137,13 +127,10 @@ class Citadel
     url = matrix_paths.base_uri + matrix_paths.join_room_path(room_id)
 
     response = HTTP.auth(ENV['AUTH_TOKEN']).post(url)
-    Rails.logger.debug response.code
 
     matrix_interceptor = MatrixInterceptor.new
     if matrix_interceptor.need_to_wait_and_retry(response)
-      Rails.logger.debug 'Retry request'
       response = HTTP.auth(ENV['AUTH_TOKEN']).post(url)
-      Rails.logger.debug response.code
     end
   end
 
@@ -152,13 +139,10 @@ class Citadel
     url = matrix_paths.base_uri + matrix_paths.leave_room_path(room_id)
 
     response = HTTP.auth(ENV['AUTH_TOKEN']).post(url)
-    Rails.logger.debug response.code
 
     matrix_interceptor = MatrixInterceptor.new
     if matrix_interceptor.need_to_wait_and_retry(response)
-      Rails.logger.debug 'Retry request'
       response = HTTP.auth(ENV['AUTH_TOKEN']).post(url)
-      Rails.logger.debug response.code
     end
   end
 
@@ -174,13 +158,10 @@ class Citadel
     data = JSON.generate data_hash
 
     response = HTTP.auth(ENV['AUTH_TOKEN']).put(url, body: data)
-    Rails.logger.debug response.code
 
     matrix_interceptor = MatrixInterceptor.new
     if matrix_interceptor.need_to_wait_and_retry(response)
-      Rails.logger.debug 'Retry request'
       response = HTTP.auth(ENV['AUTH_TOKEN']).put(url)
-      Rails.logger.debug response.code
     end
   end
 end
