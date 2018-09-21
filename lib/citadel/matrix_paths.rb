@@ -5,7 +5,7 @@ class MatrixPaths
   require 'json'
 
   def base_uri
-    ENV['TENANT_URL'] || 'https://applidium.citadel.team/'
+    ENV['TENANT_URL']
   end
 
   def login_path

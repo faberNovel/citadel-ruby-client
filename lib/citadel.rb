@@ -7,14 +7,30 @@ class Citadel
   require 'citadel/matrix_paths'
   require 'citadel/matrix_interceptor'
 
-  ##############
-  # LIST ROOMS #
-  ##############
+  ############
+  # SETTINGS #
+  ############
+
+  def self.set_public_rooms_limit(limit)
+    ENV['PUBLIC_ROOMS_LIMIT'] = limit.to_s
+  end
+
+  def self.set_tenant(tenant_url)
+    ENV['TENANT_URL'] = tenant_url
+  end
+
+  #########
+  # LOGIN #
+  #########
 
   def self.login(login, password)
     authenticator = Authenticator.new
     ENV['AUTH_TOKEN']  = 'Bearer ' + authenticator.get_token(login, password)
   end
+
+  ##############
+  # LIST ROOMS #
+  ##############
 
   def self.list_all_public_rooms
     response = all_public_rooms_response
