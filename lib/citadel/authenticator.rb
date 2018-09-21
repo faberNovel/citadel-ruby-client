@@ -3,7 +3,7 @@
 class Authenticator
   require 'http'
   require 'json'
-  require 'matrix_paths'
+  require_relative 'matrix_paths'
 
   def get_token(login, password)
     matrix_paths = MatrixPaths.new
