@@ -1,8 +1,8 @@
 # Citadel
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/citadel`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Citadel SDK is a gem to interact with Citadel infrastructure in your Ruby projects.
+Citadel is a secured messaging app based on Matrix protocol.
+This gem enables you to connect to your account and publish messages, it can also create rooms or invite people in rooms.
 
 ## Installation
 
@@ -22,7 +22,38 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Basics
+
+First you must specify your base url, which represents the tenant (or server) you'll log in to. You must specify a tenant, otherwise, it won't work at all.
+
+```Citadel.set_tenant('https://yourtenant.citadel.team/')```
+
+Then log in with your id and password
+
+```Citadel.login('@Your_id:yourtenant.citadel.team','Password')```
+
+You can now send a message! Use the id of a room you're in
+
+```Citadel.send_message('!Room_id:yourtenant.citadel.team','Your message')```
+
+### List rooms
+```Citadel.list_all_public_rooms``` lists all public rooms in your tenant directory
+```Citadel.list_all_joined_rooms``` lists all rooms you're in
+```Citadel.set_public_rooms_limit(100)``` specifies a limit when fetching rooms in your tenant directory (usefull when you have many of them)
+
+### Room creation
+```Citadel.create_room(room_name, topic)``` creates a room with name *room_name* and topic *topic*. Visibility is "public" by default.
+
+### Invite other users
+```Citadel.invite_users_in_room(room_id, users)``` invites all users provided in array *users* in room of id *room_id*. You must use users's is (@name:tenant.citadel.team)
+```Citadel.invite_in_room(room_id, user_id)``` invite a single user in specified room. Use user id as above.
+
+### Join or leave a room
+```Citadel.join_room(room_id)``` to join a room
+```Citadel.leave_room(room_id)``` to leave a room
+
+### Room administration
+```Citadel.change_room_visibility(room_id, visibility)``` to change a room visibility. Visibility can be "private" or "public". It requires you to be admin of this room.
 
 ## Development
 
@@ -32,7 +63,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/citadel. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/claireduf/citadel. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
