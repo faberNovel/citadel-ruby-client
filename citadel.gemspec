@@ -26,6 +26,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'bundler', '~> 1.16'
   s.add_development_dependency 'rake', '~> 10.0'
   s.add_development_dependency 'rspec', '~> 3.0'
-  s.add_dependency 'http'
-  s.add_dependency 'json'
+  s.add_dependency 'http', '~>3.3'
+  s.add_dependency 'json', '~> 2.1', '>= 1.8.3'
 end
