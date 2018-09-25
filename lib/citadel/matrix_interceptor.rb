@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class MatrixInterceptor
-  require 'http'
-  require 'json'
 
   def need_to_wait_and_retry(response)
     wait_time = JSON.parse(response.body)['retry_after_ms']

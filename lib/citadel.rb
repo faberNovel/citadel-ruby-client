@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
+require 'http'
+require 'json'
+require 'citadel/authenticator'
+require 'citadel/matrix_paths'
+require 'citadel/matrix_interceptor'
+
 class Citadel
-  require 'http'
-  require 'json'
-  require 'citadel/authenticator'
-  require 'citadel/matrix_paths'
-  require 'citadel/matrix_interceptor'
 
   ############
   # SETTINGS #

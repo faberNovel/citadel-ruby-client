@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class MatrixPaths
-  require 'http'
-  require 'json'
 
   def base_uri
     ENV['TENANT_URL']
