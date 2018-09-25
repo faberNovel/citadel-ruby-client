@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
+require_relative 'matrix_paths'
+
 class Authenticator
-  require 'http'
-  require 'json'
-  require_relative 'matrix_paths'
 
   def get_token(login, password)
     matrix_paths = MatrixPaths.new

@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
+require 'http'
+require 'json'
+require 'citadel/authenticator'
+require 'citadel/matrix_paths'
+require 'citadel/matrix_interceptor'
+
 class Citadel
-  require 'http'
-  require 'json'
-  require 'citadel/authenticator'
-  require 'citadel/matrix_paths'
-  require 'citadel/matrix_interceptor'
 
   ############
   # SETTINGS #
@@ -16,7 +17,11 @@ class Citadel
   end
 
   def self.set_tenant(tenant_url)
-    ENV['TENANT_URL'] = tenant_url
+    if tenant_url[-1,1] == '/'
+      ENV['TENANT_URL'] = tenant_url[0,tenant_url.length-1]
+    else
+      ENV['TENANT_URL'] = tenant_url
+    end
   end
 
   #########
