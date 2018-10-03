@@ -8,15 +8,14 @@ require 'citadel/matrix_interceptor'
 
 module Citadel
 
-  @tenant_url
-  @public_rooms_limit = 100
+  DEFAULT_PUBLIC_ROOMS_LIMIT = 100
 
   class << self
     attr_accessor :tenant_url, :public_rooms_limit
   end
 
   class Client
-    def initialize(tenant_url, public_rooms_limit)
+    def initialize(tenant_url, public_rooms_limit = DEFAULT_PUBLIC_ROOMS_LIMIT)
       if tenant_url[-1,1] == '/'
         Citadel.tenant_url = tenant_url[0,tenant_url.length-1]
       else
