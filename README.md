@@ -26,21 +26,26 @@ Or install it yourself as:
 
 First you must instanciate a client with a base url, which represents the tenant (or server) you'll log in to, and a limit for public rooms (default value is 100).
 
-```require 'citadel'
+```require 'citadel'```
 
-client = Citadel::Client.new('https://myTenant.citadel.team/', 150)```
+```client = Citadel::Client.new('https://myTenant.citadel.team/', 150)```
+
 
 And then, you have to log in
 
 ```client.sign_in("@John.Doe:myTenant.citadel.team","password")```
 
+
 You can now send a message! Use the id of a room you're in
 
 ```client.send_message("!123456789:myTenant.citadel.team","Hello world!")```
 
+
 ### List rooms
+
 ```client.list_all_public_rooms```
 lists all public rooms in your tenant directory
+
 
 ```client.list_all_joined_rooms```
 lists all rooms you're in
@@ -50,6 +55,7 @@ specifies a limit when fetching rooms in your tenant directory (usefull when you
 
 
 ### Room creation
+
 ```client.create_room(room_name, topic)```
 creates a room with name *room_name* and topic *topic*. Visibility is "public" by default.
 
@@ -63,6 +69,7 @@ invite a single user in specified room. Use user id as above.
 
 
 ### Join or leave a room
+
 ```client.join_room(room_id)```
 to join a room
 
@@ -71,6 +78,7 @@ to leave a room
 
 
 ### Room administration
+
 ```client.change_room_visibility(room_id, visibility)```
 to change a room visibility. Visibility can be "private" or "public". It requires you to be admin of this room.
 
