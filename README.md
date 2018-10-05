@@ -1,6 +1,6 @@
 # Citadel
 
-Citadel SDK is a gem to interact with Citadel infrastructure in your Ruby projects.
+Citadel Ruby client is a gem to interact with Citadel infrastructure in your Ruby projects.
 Citadel is a secured messaging app based on Matrix protocol.
 This gem enables you to connect to your account and publish messages, it can also create rooms or invite people in rooms.
 
