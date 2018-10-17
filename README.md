@@ -1,4 +1,4 @@
-# Citadel
+# Citadel Ruby Client
 
 Citadel Ruby client is a gem to interact with Citadel infrastructure in your Ruby projects.
 Citadel is a secured messaging app based on Matrix protocol.
