@@ -2,15 +2,15 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'citadel/version'
 Gem::Specification.new do |s|
-  s.name        = 'citadel'
+  s.name        = 'citadel-ruby-client'
   s.version     = Citadel::VERSION
-  s.date        = '2018-09-21'
-  s.summary     = 'Citadel SDK'
+  s.date        = '2018-10-17'
+  s.summary     = 'Citadel Ruby client'
   s.description = 'A simple way to publish messages on Citadel'
   s.authors     = ['Claire Dufetrelle']
   s.email       = ['claire.dufetrelle@fabernovel.com']
   s.homepage    =
-    'http://rubygems.org/gems/citadel'
+    'http://rubygems.org/gems/citadel-ruby-client'
   s.license       = 'MIT'
   s.files         = %w(
     lib/citadel.rb
