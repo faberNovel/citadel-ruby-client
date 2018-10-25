@@ -1,6 +1,6 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'citadel/version'
+require 'citadel-ruby-client/version'
 Gem::Specification.new do |s|
   s.name        = 'citadel-ruby-client'
   s.version     = Citadel::VERSION
@@ -13,11 +13,11 @@ Gem::Specification.new do |s|
     'http://rubygems.org/gems/citadel-ruby-client'
   s.license       = 'MIT'
   s.files         = %w(
-    lib/citadel.rb
-    lib/citadel/authenticator.rb
-    lib/citadel/matrix_interceptor.rb
-    lib/citadel/matrix_paths.rb
-    lib/citadel/version.rb
+    lib/citadel-ruby-client.rb
+    lib/citadel-ruby-client/authenticator.rb
+    lib/citadel-ruby-client/matrix_interceptor.rb
+    lib/citadel-ruby-client/matrix_paths.rb
+    lib/citadel-ruby-client/version.rb
     )
   s.bindir        = 'exe'
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
