@@ -2,9 +2,9 @@
 
 require 'http'
 require 'json'
-require 'citadel/authenticator'
-require 'citadel/matrix_paths'
-require 'citadel/matrix_interceptor'
+require 'citadel-ruby-client/authenticator'
+require 'citadel-ruby-client/matrix_paths'
+require 'citadel-ruby-client/matrix_interceptor'
 
 module Citadel
 

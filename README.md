@@ -9,7 +9,7 @@ This gem enables you to connect to your account and publish messages, it can als
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'citadel'
+gem 'citadel-ruby-client'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install citadel
+    $ gem install citadel-ruby-client
 
 ## Usage
 
@@ -26,7 +26,7 @@ Or install it yourself as:
 
 First you must instanciate a client with a base url, which represents the tenant (or server) you'll log in to, and a limit for public rooms (default value is 100).
 
-```require 'citadel'```
+```require 'citadel-ruby-client'```
 
 ```client = Citadel::Client.new('https://myTenant.citadel.team/', 150)```
 
